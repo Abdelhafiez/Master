@@ -1,6 +1,6 @@
 <?php
 
-include('quiz.php');
+include_once('quiz.php');
 
 $quiz = Quiz::getQuizByName($_GET['QuizName']);
 $version = $quiz->getVersions() + 1;

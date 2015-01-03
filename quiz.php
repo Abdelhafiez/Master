@@ -1,6 +1,6 @@
 <?php
 
-include('connection.php');
+include_once('connection.php');
 
 class Quiz {
 	public $QuizId, $QuizName, $EdUserName, $Points, $NumOfQuestions;
