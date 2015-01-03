@@ -6,6 +6,7 @@ Include("myphp.php");
 		<title>Math Test</title>
 	</head>
 	<body>
+	
 		<?php
 			if (isset($_SESSION['login'])){
 				if ($_SESSION['type'] == 'Student'){ // student
@@ -22,5 +23,6 @@ Include("myphp.php");
 				}
 			}
 		?>
+		
 	</body>
 </html>
