@@ -6,9 +6,16 @@
 	}else{
 		include("session.php");
 		include("quiz.php");
+		include_once("connection.php");
+		$connection = connectToDatabase();
 		$quizName = $_GET['names'];
-		$q =  Quiz::getQuizByName($quizName);
-		$questions = $q->getQuestions();
+		$userName = $_SESSION['UserName'];
+		$q = Quiz::getQuizByName($quizName);
+		$query = buildSelectQueryByTwoKeysValues('attempt','StUserName',$userName,'QuizId',$q->QuizId);
+		$arr = executeSelectQuery($connection, $query) ;
+		$size = Count($arr);
+		echo $size ;
+		$questions = $q->getQuestionsByVersion($size+1);
 		echo "<form action=\"handleQuiz.php\" method = \"POST\">";	
 			echo "<ul>";
 				foreach($questions as $key => $item){
