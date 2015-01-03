@@ -9,8 +9,6 @@ Include("myphp.php");
 		<ul>
 			<li><a href = "index.php">Home</a></li>
 			<li><a href = "login.php">Login</a></li>
-			<li><a href = "viewprofile.php">View Profile</li>
-			<li><a href = "logout.php">Logout</li>
 		</ul>
 	</body>
 </html>
