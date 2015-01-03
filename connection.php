@@ -49,6 +49,10 @@ function buildSelectQueryByKeyValue($tableName, $key, $value) {
 	return "SELECT * FROM `".$tableName."` where `".$key."` = '".$value."'";
 }
 
+function buildSelectQueryByTwoKeysValues($tableName, $key1, $value1, $key2, $value2) {
+	return buildSelectQueryByKeyValue($tableName, $key1, $value1) . " and `".$key2."` = '".$value2."'";
+}
+
 function executeSelectQuery($connection, $query) {
 	$ret = array();
 	if ($result = mysqli_query($connection, $query)) {

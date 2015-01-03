@@ -26,6 +26,12 @@ class Quiz {
 		return count($this->getQuestions()) / $this->NumOfQuestions;	// take care of division .. round or cast
 	}
 	
+	public function getQuestionsByVersion($version) {
+		$connection = connectToDatabase();
+		$query = buildSelectQueryByTwoKeysValues(DB_QUESTION_TABLE, 'QuizID', $this->QuizId, 'QuizVersion', $version);
+		return executeSelectQuery($connection, $query);
+	}
+	
 	public function getQuestions() {
 		$connection = connectToDatabase();
 		$query = buildSelectQueryByKeyValue(DB_QUESTION_TABLE, 'QuizID', $this->QuizId);
