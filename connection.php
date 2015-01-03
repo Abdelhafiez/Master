@@ -4,7 +4,9 @@ define('DB_SERVER', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 define('DB_NAME', 'mathtest');
+
 define('DB_USER_TABLE', 'user');
+define('DB_QUIZ_TABLE', 'quiz');
 
 function connectToDatabase() {
 	$connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD) or die("Problem with connection...");
