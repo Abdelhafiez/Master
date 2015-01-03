@@ -3,7 +3,7 @@
 	$connection = connectToDatabase();
 	$username = $_SESSION['UserName'];
 	$result = array();
-	$result = get_user_details($connection,$usrname);
+	$result = getuserdetails($connection,$usrname);
 	foreach ($array as $key => $item){
 		echo $key." ".$item."\n";
 	}
