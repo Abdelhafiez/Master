@@ -1,13 +1,11 @@
-<?php
-Include("myphp.php");
-?>
+
 <html>
 	<head>
 		<title>Math Test</title>
 	</head>
 	<body>
 		<?php
-			if(isset($_SESSION['login'])){
+			if(isset($_SESSION['login'])){ 
 				if ($_SESSION['type'] == 'Student'){ // student
 					echo "&nbsp <a href = 'index.php'>Home</a><br/><br/>\n";
 					echo "&nbsp <a href = 'viewprofile.php'>View Profile</a><br/><br/>\n";
@@ -20,7 +18,7 @@ Include("myphp.php");
 					echo "&nbsp <a href = 'addQ.php'>Add Quiz</a>\n";
 					echo "&nbsp <a href = 'logout.php'>LogOut</a><br/><br/>\n";
 				}
-			}else{
+			}else{ 
 				header("location:login.php");
 			}
 		?>
