@@ -6,11 +6,21 @@ Include("myphp.php");
 		<title>Math Test</title>
 	</head>
 	<body>
-		<ul>
-			<li><a href = "login.php">Login</a></li>
-			<li><a href = "register.php">Register</li>
-			<li><a href = "viewprofile.php">View Profile</li>
-			<li><a href = "logout.php">Logout</li>
-		</ul>
+		<?php
+			if (isset($_SESSION['login'])){
+				if ($_SESSION['type'] == 'Student'){ // student
+					echo "&nbsp <a href = 'index.php'>Home</a><br/><br/>\n";
+					echo "&nbsp <a href = 'viewprofile.php'>View Profile</a><br/><br/>\n";
+					echo "&nbsp <a href = 'takequiz.php'>Take Quiz</a><br/><br/>\n";
+					echo "&nbsp <a href = 'logout.php'>LogOut</a><br/><br/>\n";
+				}
+				else { // Educator
+					echo "&nbsp <a href = 'index.php'>Home</a><br/><br/>\n";
+					echo "&nbsp <a href = 'viewprofile.php'>View Profile</a><br/><br/>\n";
+					echo "&nbsp <a href = 'addQ.php'>Add Quiz</a>\n";
+					echo "&nbsp <a href = 'logout.php'>LogOut</a><br/><br/>\n";
+				}
+			}
+		?>
 	</body>
 </html>
