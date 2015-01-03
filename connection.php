@@ -12,7 +12,6 @@ define('DB_QUESTION_TABLE', 'question');
 // lammo akhza memorization
 function connectToDatabase() {
 	if (isset($GLOBALS['connection'])) {
-		echo 'Memorized<br/>';
 		return $GLOBALS['connection'];
 	}
 	$connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD) or die("Problem with connection...");

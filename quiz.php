@@ -23,7 +23,7 @@ class Quiz {
 	
 	// it returns the current number of versions this quiz contains
 	public function getVersions() {
-		return 0;
+		return count($this->getQuestions()) / $this->NumOfQuestions;	// take care of division .. round or cast
 	}
 	
 	public function getQuestions() {
