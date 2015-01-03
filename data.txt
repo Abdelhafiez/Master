@@ -1,0 +1,47 @@
+Student First Name -  Last Name - UserName (Primary Key) - Password Unique - gender - email - address - Points
+Educator First Name -  Last Name - UserName (Primary Key) - Password Unique - gender -email - institution - address
+Question QuestionId(Primary Key) - Question - Answer - QuizID(FK)
+Quiz QuizID(PrimaryKey) - Points - EducatorUserName(FK) - NumOfQuestions
+Attempt AttemptId(Primary Key) - QuizId(FK) - StudentUserName(FK) -  Score
+
+Relations
+__________
+Quiz & Question  1:N
+Educator & Quiz 1:N
+Student Attempt 1:N
+
+CREATE TABLE USER (
+    FirstName VARCHAR(20) NOT NULL,
+    LastName VARCHAR(20) NOT NULL,
+    UserName VARCHAR(20) Primary Key NOT NULL,
+    Password  VARCHAR(20)  NOT NULL,
+    Gender BIT NOT NULL,
+    Type  BIT NOT NULL,
+    DateOfBirth Date Not Null,
+    Email VARCHAR(20) NOT NULL UNIQUE,
+    Institution VARCHAR(20) NOT NULL,
+    Address VARCHAR(20),
+    Points INT(11) default 0
+);
+CREATE TABle Quiz(
+    QuizId INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    EdUserName VARCHAR(20) NOT NULL,
+    Points INT(11) NOT NULL,
+    NumOfQuestions INT(11) NOT NULL,
+    FOREIGN KEY (EdUserName) REFERENCES USER (UserName)
+);
+CREATE TABLE QUESTION (
+    QuestionId INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    QuizID INT(11) NOT NULL,
+    Question TEXT NOT NULL,
+    Answer TEXT NOT NULL,
+    FOREIGN KEY (QuizID) REFERENCES QUIZ (QuizID)
+);
+CREATE TABLE ATTEMPT(
+    AttemptId INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    QuizId INT(11) NOT NULL,
+    StUserName VARCHAR(20) NOT NULL,
+    Score INT(11) NOT NULL,
+    FOREIGN KEY (QuizId) REFERENCES QUIZ (QuizId),
+    FOREIGN KEY (StUserName) REFERENCES USER (UserName)
+);
