@@ -1,6 +1,4 @@
-<?php
-Include("myphp.php");
-?>
+
 <html>
 	<head>
 		<title>Math Test</title>

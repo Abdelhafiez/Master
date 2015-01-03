@@ -31,4 +31,12 @@ function buildInsertQuery($tableName, $arr) {
 	return $query;
 }
 
+function getuserdetails($connection,$username)
+{
+	$query = "select * from user where UserName = '".$username."'";
+	$result = mysqli_query($connection,$query);
+	return mysqli_fetch_assoc($result);
+}
+
+
 ?>
