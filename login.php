@@ -1,4 +1,9 @@
 <?php
+
+include("connection.php") ; 
+$connection = connectToDatabase() ; 
+
+
 session_start();
 
 if($_POST){
@@ -9,15 +14,15 @@ $_SESSION['Password'] = md5($_POST['Password']);
 
 if($_SESSION['UserName'] && $_SESSION['Password']){
 
-	mysql_connect("localhost", "root", "") or die("problem with connection...");
-	mysql_select_db("mathtest");
+	//mysql_connect("localhost", "root", "") or die("problem with connection...");
+	//mysql_select_db("mathtest");
 
-	$query = mysql_query("SELECT * FROM user WHERE UserName='".$_SESSION['UserName']."'");
-	$numrows = mysql_num_rows($query);
+	$query = mysqli_query( $connection  , "SELECT * FROM user WHERE UserName='".$_SESSION['UserName']."'" );
+	$numrows = mysqli_num_rows($query);
 
 	if($numrows != 0){
-	
-		while($row = mysql_fetch_assoc($query)){
+		
+		while($row = mysqli_fetch_assoc($query)){
 		
 			$dbname = $row['UserName'];
 			$dbpassword = $row['Password'];
@@ -33,7 +38,8 @@ if($_SESSION['UserName'] && $_SESSION['Password']){
 				header("location:enter.php");
 			
 			}else{
-				echo "Your UserName is incorrect!";
+				echo "Your password is incorrect!";
+				//echo $_SESSION['Password']." ".$dbpassword ; 
 			}
 		
 		}else{

@@ -1,5 +1,5 @@
 <?php
-	function add_question($question,$answer)
+	function addQuestion($question,$answer)
 	{
 		//code here
 	}
