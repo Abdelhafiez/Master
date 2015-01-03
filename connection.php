@@ -45,6 +45,19 @@ function getuserdetails($connection,$username)
 	return mysqli_fetch_assoc($result);
 }
 
+function buildSelectQueryByKeyValue($tableName, $key, $value) {
+	return "SELECT * FROM `".$tableName."` where `".$key."` = '".$value."'";
+}
 
+function executeSelectQuery($connection, $query) {
+	$ret = array();
+	if ($result = mysqli_query($connection, $query)) {
+		while ($row = mysqli_fetch_assoc($result)) 
+			array_push($ret,$row);
+	} else {
+		die ("Failed executing query");
+	}
+	return $ret;
+}
 
 ?>
