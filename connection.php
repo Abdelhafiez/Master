@@ -8,10 +8,15 @@ define('DB_NAME', 'mathtest');
 define('DB_USER_TABLE', 'user');
 define('DB_QUIZ_TABLE', 'quiz');
 
+// lammo akhza memorization
 function connectToDatabase() {
+	if (isset($GLOBALS['connection'])) {
+		echo 'Memorized<br/>';
+		return $GLOBALS['connection'];
+	}
 	$connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD) or die("Problem with connection...");
 	mysqli_select_db($connection, DB_NAME) or die('Could not find database');
-	return $connection;
+	return $GLOBALS['connection'] = $connection;
 }
 
 function buildInsertQuery($tableName, $arr) {
