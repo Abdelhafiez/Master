@@ -14,7 +14,6 @@ $connection = connectToDatabase() ;
 
 echo "<table width=\"90%\" align=center border=2>";
 echo "<tr>
-<td width=\"40%\" align=center >Quiz Id</td>
 <td width=\"40%\" align=center >Educator User Name</td>
 <td width=\"40%\" align=center >Quiz Name</td> </tr>" ; 
 
@@ -23,16 +22,16 @@ $query = mysqli_query($connection , "SELECT * FROM quiz" );
 
 while($row=mysqli_fetch_assoc($query)) {
 
-
 	$id=$row['QuizId'];
 	$name=$row['QuizName'];
 	$edname=$row['EdUserName'];
 	
-echo "<tr><td align=center>
-<a href=\"takequiz.php?names=$name\">$id</a></td>
-<td>$edname</td><td>$name</td></tr>";	
+echo "<tr>
+<td align=center>$edname</td><td align=center><a href=\"takequiz.php?names=$name\">$name</a></td></tr>";	
 	
 } echo "</table>";
 
 
 }
+
+// INSERT INTO `quiz`( `EdUserName`, `Points`, `NumOfQuestions`, `QuizName`) VALUES ("Mostafa",25,5,"Math") ;
