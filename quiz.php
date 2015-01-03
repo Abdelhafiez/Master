@@ -5,7 +5,7 @@ include('connection.php');
 class Quiz {
 	public $QuizId, $QuizName, $EdUserName, $Points, $NumOfQuestions;
 	
-	public function __constructor($QuizId, $QuizName, $EdUserName, $Points, $NumOfQuestions) {
+	public function __construct($QuizId, $QuizName, $EdUserName, $Points, $NumOfQuestions) {
 		$this->QuizId = $QuizId;
 		$this->QuizName = $QuizName;
 		$this->EdUserName = $EdUserName;
@@ -24,6 +24,12 @@ class Quiz {
 	// it returns the current number of versions this quiz contains
 	public function getVersions() {
 		return 0;
+	}
+	
+	public function getQuestions() {
+		$connection = connectToDatabase();
+		$query = buildSelectQueryByKeyValue(DB_QUESTION_TABLE, 'QuizID', $this->QuizId);
+		return executeSelectQuery($connection, $query);
 	}
 }
 

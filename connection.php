@@ -7,6 +7,7 @@ define('DB_NAME', 'mathtest');
 
 define('DB_USER_TABLE', 'user');
 define('DB_QUIZ_TABLE', 'quiz');
+define('DB_QUESTION_TABLE', 'question');
 
 // lammo akhza memorization
 function connectToDatabase() {
