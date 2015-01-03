@@ -1,5 +1,4 @@
-Student First Name -  Last Name - UserName (Primary Key) - Password Unique - gender - email - address - Points
-Educator First Name -  Last Name - UserName (Primary Key) - Password Unique - gender -email - institution - address
+User First Name -  Last Name - UserName (Primary Key) - Password Unique - gender - email - address - Points - Institution
 Question QuestionId(Primary Key) - Question - Answer - QuizID(FK)
 Quiz QuizID(PrimaryKey) - Points - EducatorUserName(FK) - NumOfQuestions
 Attempt AttemptId(Primary Key) - QuizId(FK) - StudentUserName(FK) -  Score
