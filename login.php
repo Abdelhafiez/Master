@@ -21,7 +21,7 @@ if($_SESSION['UserName'] && $_SESSION['Password']){
 	$numrows = mysqli_num_rows($query);
 
 	if($numrows != 0){
-	
+		
 		while($row = mysqli_fetch_assoc($query)){
 		
 			$dbname = $row['UserName'];
@@ -38,7 +38,8 @@ if($_SESSION['UserName'] && $_SESSION['Password']){
 				header("location:enter.php");
 			
 			}else{
-				echo "Your UserName is incorrect!";
+				echo "Your password is incorrect!";
+				//echo $_SESSION['Password']." ".$dbpassword ; 
 			}
 		
 		}else{
