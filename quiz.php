@@ -43,6 +43,7 @@ class Quiz {
 	
 	// returns the questions for the next attempt for this student
 	public function getQuestionsByUsername($userName) {
+		$connection = connectToDatabase();
 		$query = buildSelectQueryByTwoKeysValues('attempt','StUserName',$userName,'QuizId',$this->QuizId);
 		$arr = executeSelectQuery($connection, $query) ;
 		return $this->getQuestionsByVersion(Count($arr)+1);
