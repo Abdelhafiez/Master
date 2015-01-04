@@ -8,11 +8,11 @@
 		include("quiz.php");
 		include_once("connection.php");
 		$connection = connectToDatabase();
-		$quizName = $_GET['name'];
-		$userName = $_SESSION['Username'];
-		$q = Quiz::getQuizByName($quizName);
-		$questions = $q->getQuestionsByUserName($size+1);
-		echo "<form action=\"handleQuiz.php?name=$name\" method = \"POST\">";	
+		$quizname = $_GET['names'];
+		$username = $_SESSION['Username'];
+		$q = Quiz::getQuizByName($quizname);
+		$questions = $q->getQuestionsByUserName($username);
+		echo "<form action=\"handleQuiz.php?quizname = $quizname\" method = \"POST\">";	
 			echo "<ul>";
 				foreach($questions as $key => $item){
 					echo "<li>";
@@ -21,7 +21,7 @@
 					echo "</li>";
 				}
 			echo "</ul>";
-			echo "<input type=\"submit\" value=\"Submit\" onsubmit=\"return validate();\">";
+			echo "<input type=\"submit\" value=\"Submit\" >";
 		echo "</form>";
 	}
 ?>
