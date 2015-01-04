@@ -12,16 +12,20 @@
 		$username = $_SESSION['Username'];
 		$q = Quiz::getQuizByName($quizname);
 		$questions = $q->getQuestionsByUserName($username);
-		echo "<form action=\"handleQuiz.php?quizname = $quizname\" method = \"POST\">";	
-			echo "<ul>";
-				foreach($questions as $key => $item){
-					echo "<li>";
-					echo "Question".$key."<br/>".$item['Question']." : ";
-					echo "<input type=\"text\" name=\"Answer[]\">" ;
-					echo "</li>";
-				}
-			echo "</ul>";
-			echo "<input type=\"submit\" value=\"Submit\" >";
-		echo "</form>";
+		if(Count($questions)){	
+			echo "<form action=\"handleQuiz.php?quizname=$quizname\" method = \"POST\">";	
+				echo "<ul>";
+					foreach($questions as $key => $item){
+						echo "<li>";
+						echo "Question".$key."<br/>".$item['Question']." : ";
+						echo "<input type=\"text\" name=\"Answer[]\">" ;
+						echo "</li>";
+					}
+				echo "</ul>";
+				echo "<input type=\"submit\" value=\"Submit\" >";
+			echo "</form>";
+		}else{
+			echo "<h1>There is No Attempts Available Now For You</h1> </br>";
+		}
 	}
 ?>
