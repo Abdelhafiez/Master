@@ -68,6 +68,12 @@ class Quiz {
 				<textarea name = 'Answer[]' cols = '100' rows = '5'>".$a."</textarea> <p>";
 		}
 	}
+	
+	public static function updateQuestion($questionId, $key, $value) {
+		$connection = connectToDatabase();
+		// echo buildUpdateQuery(DB_QUESTION_TABLE, 'QuestionId', $questionId, $key, $value)."<br>";
+		mysqli_query($connection, buildUpdateQuery(DB_QUESTION_TABLE, 'QuestionId', $questionId, $key, $value));
+	}
 }
 
 ?>

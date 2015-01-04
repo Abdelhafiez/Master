@@ -27,7 +27,7 @@ $version = $_GET['version'];
 		<form 	method = "post" action = "editQuestions.php?QuizName=<?php echo $quiz->QuizName; ?>&version=<?php echo $version; ?>" 
 				onsubmit = "return validateNonEmptyFields()">
 			<?php $quiz->drawQuestionsAnswers($version) ?>
-			<input type = "submit" value = "Submit">
+			<input type = "submit" value = "Save">
 		</form>
 	</body>
 </html>
