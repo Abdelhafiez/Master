@@ -64,4 +64,14 @@ function executeSelectQuery($connection, $query) {
 	return $ret;
 }
 
+// updates records which has record[$key] = value .. to have record[$updateKey] = $updateValue
+function buildUpdateQuery($tableName, $key, $value, $updateKey, $updateValue) {
+	return "UPDATE `".$tableName."` SET `".$updateKey."`='".$updateValue."' WHERE `".$key."` = '".$value."'";
+}
+
 ?>
+
+
+
+
+

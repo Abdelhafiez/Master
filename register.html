@@ -234,6 +234,7 @@
 	  </head>
 	<body>
 		<form action = "register.php" method = "post" id = "myform" >
+
 			<table>
 				<tr>
 					<td>Username</td>
@@ -294,6 +295,29 @@
 					</td>
 				</tr>
 			</table>
+
+			Username: <input type = "text" name = "Username" id = "Username"> <p>
+			Email: <input type = "text" name = "Email" id = "Email"/> <p>
+			Password: <input type = "password" name = "Password" id = "Password"/>  <label id = "chkstren"> <font id = "prag1"   color = "white">check Strength
+		    </font></label> <p>
+			Confirm Password: <input type = "password" id = "ConfirmPassword" /> <p>
+			First Name: <input type = "text" name = "FirstName" id = "FirstName"/> <p>
+			Last Name: <input type = "text" name = "LastName" id = "LastName"/> <p>
+			Institution <input type = "text" name = "Institution" id = "Institution"> <p>
+			Address <input type = "text" name = "Address" id = "Address"> <p>
+			Birthday: <input type = "date" name = "DateOfBirth" id = "DateOfBirth"> <p>
+			Gender:
+			<input type = "radio" name = "Gender" value = "Male" id = "male"> Male
+			<input type = "radio" name = "Gender" value = "Female" id = "female"> Female
+			<p>
+			Type:
+			<input type = "radio" name = "Type" value = "Student" id = "student"> Student
+			<input type = "radio" name = "Type" value = "Educator"id = "educator" > Educator
+			<p>
+			<input type="reset" title="Reset Your Info" value="Reset" id ="resBtn">
+			<input type = "submit" value = "Submit" title="Submit Your Info" id = "subBtn" disabled = "true">
+			
+
 		</form>
 	</body>
 </html>

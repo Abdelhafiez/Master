@@ -10,7 +10,6 @@
 
 ?>
 
-
 <html>
 	<head> 
 		<title> Add <?php echo $quiz->QuizName; ?> Quiz Version </title> 
@@ -29,16 +28,7 @@
 	<body>
 		<h2> Add Version <?php echo $version; ?> of <?php echo $quiz->QuizName; ?> Quiz</h2>
 		<form method = "post" action = "addQuestions.php?QuizName=<?php echo $quiz->QuizName; ?>" onsubmit = "return validateNonEmptyFields()">
-			<?php 
-				for ($i=0; $i<$quiz->NumOfQuestions; $i++) {
-					echo ($i + 1).")<p>";
-					echo 
-						"Question: <br/>
-						<textarea name = 'Question[]' cols = '100' rows = '5'></textarea> <p>
-						Answer: <br/>
-						<textarea name = 'Answer[]' cols = '100' rows = '5'></textarea> <p>";
-				}
-			?>
+			<?php $quiz->drawQuestionsAnswers(-1); ?>
 			<input type = "submit" value = "Submit">
 		</form>
 	</body>
