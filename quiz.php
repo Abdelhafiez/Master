@@ -37,6 +37,13 @@ class Quiz {
 		$query = buildSelectQueryByKeyValue(DB_QUESTION_TABLE, 'QuizID', $this->QuizId);
 		return executeSelectQuery($connection, $query);
 	}
+	
+	// returns the questions for the next attempt for this student
+	public function getQuestionsByUsername($userName) {
+		$query = buildSelectQueryByTwoKeysValues('attempt','StUserName',$userName,'QuizId',$this->QuizId);
+		$arr = executeSelectQuery($connection, $query) ;
+		return $this->getQuestionsByVersion(Count($arr)+1);
+	}
 }
 
 ?>

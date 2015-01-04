@@ -11,11 +11,7 @@
 		$quizName = $_GET['names'];
 		$userName = $_SESSION['Username'];
 		$q = Quiz::getQuizByName($quizName);
-		$query = buildSelectQueryByTwoKeysValues('attempt','StUserName',$userName,'QuizId',$q->QuizId);
-		$arr = executeSelectQuery($connection, $query) ;
-		$size = Count($arr);
-		echo $size ;
-		$questions = $q->getQuestionsByVersion($size+1);
+		$questions = $q->getQuestionsByUsername($userName);
 		echo "<form action=\"handleQuiz.php\" method = \"POST\">";	
 			echo "<ul>";
 				foreach($questions as $key => $item){
