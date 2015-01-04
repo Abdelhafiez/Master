@@ -1,5 +1,9 @@
 <?php
-session_start();
+	session_start();
+	if (!isset($_SESSION['Username'])) // for login
+		header("Location: login.php");
+	if($_SESSION['Type'] != "Student") // for type
+		header("Location: index.php");
 if(!isset($_SESSION['Username'])){
 
 echo "Access denied!";

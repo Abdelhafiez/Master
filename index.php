@@ -7,7 +7,7 @@
 		<?php
 			session_start();
 			if(isset($_SESSION['Username'])){ 
-				if ($_SESSION['Type'] == 'Student'){ // student
+				if ($_SESSION['Type'] == "Student"){ // student
 					echo "&nbsp <a href = 'index.php'>Home</a><br/><br/>\n";
 					echo "&nbsp <a href = 'viewprofile.php'>View Profile</a><br/><br/>\n";
 					echo "&nbsp <a href = 'choosetest.php'>Choose Test</a><br/><br/>\n";

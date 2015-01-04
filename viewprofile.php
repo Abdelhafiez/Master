@@ -1,7 +1,9 @@
 <?php
 	include("connection.php");	
-	$connection = connectToDatabase();
 	session_start();
+	if (!isset($_SESSION['Username'])) // for login
+		header("Location: login.php");
+	$connection = connectToDatabase();
 	$username = $_SESSION['Username'];
 	$result = array();
 	$result = getuserdetails($connection,$username);

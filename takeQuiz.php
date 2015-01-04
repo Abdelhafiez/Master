@@ -8,15 +8,11 @@
 		include("quiz.php");
 		include_once("connection.php");
 		$connection = connectToDatabase();
-		$quizName = $_GET['names'];
+		$quizName = $_GET['name'];
 		$userName = $_SESSION['Username'];
 		$q = Quiz::getQuizByName($quizName);
-		$query = buildSelectQueryByTwoKeysValues('attempt','StUserName',$userName,'QuizId',$q->QuizId);
-		$arr = executeSelectQuery($connection, $query) ;
-		$size = Count($arr);
-		echo $size ;
-		$questions = $q->getQuestionsByVersion($size+1);
-		echo "<form action=\"handleQuiz.php\" method = \"POST\">";	
+		$questions = $q->getQuestionsByUserName($size+1);
+		echo "<form action=\"handleQuiz.php?name=$name\" method = \"POST\">";	
 			echo "<ul>";
 				foreach($questions as $key => $item){
 					echo "<li>";

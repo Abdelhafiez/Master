@@ -1,8 +1,12 @@
 <?php
 
-include_once('quiz.php');
-include_once('connection.php');
-
+	include_once('quiz.php');
+	include_once('connection.php');
+	session_start();
+	if (!isset($_SESSION['Username'])) // for login
+		header("Location: login.php");
+	if($_SESSION['Type'] != "Educator") // for type
+		header("Location: index.php");
 $quiz = Quiz::getQuizByName($_GET['QuizName']);
 $version = $quiz->getVersions() + 1;
 
