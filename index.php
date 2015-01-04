@@ -21,7 +21,7 @@
 					echo "&nbsp <a href = 'logout.php'>LogOut</a><br/><br/>\n";
 				}
 			}else{ 
-				header("location:homeLogin.html");
+				header("location:login.html");
 			}
 		?>
 	</body>
