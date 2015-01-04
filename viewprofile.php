@@ -1,13 +1,13 @@
 <?php
 	include("connection.php");	
 	$connection = connectToDatabase();
-	$username = $_SESSION['UserName'];
+	session_start();
+	$username = $_SESSION['Username'];
 	$result = array();
-	$result = getuserdetails($connection,$usrname);
-	foreach ($array as $key => $item){
+	$result = getuserdetails($connection,$username);
+	foreach ($result as $key => $item){
 		echo $key." : ".$item."<br/>";
 	}
-}
 ?>
 <html>
 	<head>

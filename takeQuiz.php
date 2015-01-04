@@ -1,7 +1,7 @@
 
 <?php
 	session_start();
-	if(!isset($_SESSION['UserName'])){
+	if(!isset($_SESSION['Username'])){
 		echo "Access denied!";
 	}else{
 		include("session.php");
@@ -9,7 +9,7 @@
 		include_once("connection.php");
 		$connection = connectToDatabase();
 		$quizName = $_GET['names'];
-		$userName = $_SESSION['UserName'];
+		$userName = $_SESSION['Username'];
 		$q = Quiz::getQuizByName($quizName);
 		$query = buildSelectQueryByTwoKeysValues('attempt','StUserName',$userName,'QuizId',$q->QuizId);
 		$arr = executeSelectQuery($connection, $query) ;
