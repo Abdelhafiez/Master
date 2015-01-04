@@ -13,12 +13,15 @@ class Quiz {
 		$this->NumOfQuestions = $NumOfQuestions;
 	}
 	
+	public static function createQuizFromTuple($tuple) {
+		return new Quiz($tuple['QuizId'], $tuple['QuizName'], $tuple['EdUserName'], $tuple['Points'], $tuple['NumOfQuestions']);
+	}
+	
 	// This function is called like that Quiz::getQuizByName('Math') and returns the whole Quiz
 	public static function getQuizByName($quizName) {
 		$connection = connectToDatabase();
 		$query = buildSelectQueryByKeyValue(DB_QUIZ_TABLE, 'QuizName', $quizName);
-		$tuple = executeSelectQuery($connection, $query)[0];
-		return new Quiz($tuple['QuizId'], $tuple['QuizName'], $tuple['EdUserName'], $tuple['Points'], $tuple['NumOfQuestions']);
+		return Quiz::createQuizFromTuple(executeSelectQuery($connection, $query)[0]);
 	}
 	
 	// it returns the current number of versions this quiz contains
@@ -43,6 +46,27 @@ class Quiz {
 		$query = buildSelectQueryByTwoKeysValues('attempt','StUserName',$userName,'QuizId',$this->QuizId);
 		$arr = executeSelectQuery($connection, $query) ;
 		return $this->getQuestionsByVersion(Count($arr)+1);
+	}
+	
+	public function drawQuestionsAnswers($version) {
+		if ($version != -1) {
+			$questions = $this->getQuestionsByVersion($version);
+		}
+		for ($i=0; $i<$this->NumOfQuestions; $i++) {
+			if ($version != -1) {
+				$q = $questions[$i]['Question'];
+				$a = $questions[$i]['Answer'];
+			} else {
+				$q = '';
+				$a = '';
+			}
+			echo ($i + 1).")<p>";
+			echo 
+				"Question: <br/>
+				<textarea name = 'Question[]' cols = '100' rows = '5'>".$q."</textarea> <p>
+				Answer: <br/>
+				<textarea name = 'Answer[]' cols = '100' rows = '5'>".$a."</textarea> <p>";
+		}
 	}
 }
 

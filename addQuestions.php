@@ -18,12 +18,7 @@ for ($i=0; $i<$quiz->NumOfQuestions; $i++) {
 	$query = buildInsertQuery(DB_QUESTION_TABLE, $question);
 	mysqli_query($connection, buildInsertQuery(DB_QUESTION_TABLE, $question));
 }
-	
-foreach($_POST['Question'] as $key => $value)
-	echo $key."<br/>".$value."<p>";
-	
-foreach($_POST['Answer'] as $key => $value)
-	echo $key."<br/>".$value."<p>";
-	
+
+header("Location: quizVersions.php?QuizName=".$quiz->QuizName);
 
 ?>
