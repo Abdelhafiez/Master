@@ -1,31 +1,41 @@
-
 <?php
-	session_start();
-	if(!isset($_SESSION['Username'])){
-		echo "Access denied!";
-	}else{
-		include("session.php");
-		include("quiz.php");
-		include_once("connection.php");
-		$connection = connectToDatabase();
-		$quizname = $_GET['names'];
-		$username = $_SESSION['Username'];
-		$q = Quiz::getQuizByName($quizname);
-		$questions = $q->getQuestionsByUserName($username);
-		if(Count($questions)){	
-			echo "<form action=\"handleQuiz.php?quizname=$quizname\" method = \"POST\">";	
-				echo "<ul>";
-					foreach($questions as $key => $item){
-						echo "<li>";
-						echo "Question".$key."<br/>".$item['Question']." : ";
-						echo "<input type=\"text\" name=\"Answer[]\">" ;
-						echo "</li>";
-					}
-				echo "</ul>";
-				echo "<input type=\"submit\" value=\"Submit\" >";
-			echo "</form>";
-		}else{
-			echo "<h1>There is No Attempts Available Now For You</h1> </br>";
-		}
-	}
+
+include_once('authorization.php');
+include_once("quiz.php");
+include_once("connection.php");
+
+session_start();
+verifyStudent();
+
+$connection = connectToDatabase();
+$quizname = $_GET['names'];
+$username = $_SESSION['Username'];
+$q = Quiz::getQuizByName($quizname);
+$questions = $q->getQuestionsByUserName($username);
+
 ?>
+
+
+<html>
+	<head> <title> Quiz <?php echo $q->QuizName; ?> </title> </head>
+	<body>
+		<?php 
+			if (count($questions)) {
+		?>
+				<h3> <?php echo $q->QuizName; ?> Quiz (<?php echo $q->getAttemptsByUsername($username); ?> attempt(s) remaining) </h3>
+				<form action="handleQuiz.php?quizname=<?php echo $quizname; ?>" method = "POST">
+					<?php $q->drawQuestions($username); ?>
+					<input type="submit" value="Submit" >
+				</form>
+		<?php
+					
+			} else {
+		?>
+				<h1>There is No Attempts Available Now For You</h1> </br>
+		<?php
+			
+			}
+		?>
+		
+	</body>
+</html>

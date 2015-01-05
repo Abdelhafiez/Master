@@ -11,4 +11,10 @@ function verifyEducator() {
 		header('Location: index.php');
 }
 
+function verifyStudent() {
+	verifyLogin();
+	if ($_SESSION['Type'] != 'Student')
+		header('Location: index.php');
+}
+
 ?>

@@ -41,14 +41,19 @@ class Quiz {
 		return executeSelectQuery($connection, $query);
 	}
 	
-	// returns the questions for the next attempt for this student
-	public function getQuestionsByUsername($userName) {
+	public function getAttemptsByUsername($userName) {
 		$connection = connectToDatabase();
 		$query = buildSelectQueryByTwoKeysValues('attempt','StUserName',$userName,'QuizId',$this->QuizId);
 		$arr = executeSelectQuery($connection, $query) ;
-		return $this->getQuestionsByVersion(Count($arr)+1);
+		return count($arr) + 1;
 	}
 	
+	// returns the questions for the next attempt for this student
+	public function getQuestionsByUsername($userName) {
+		return $this->getQuestionsByVersion($this->getAttemptsByUsername($userName));
+	}
+	
+	// called by Educator
 	public function drawQuestionsAnswers($version) {
 		if ($version != -1) {
 			$questions = $this->getQuestionsByVersion($version);
@@ -67,6 +72,19 @@ class Quiz {
 				<textarea name = 'Question[]' cols = '100' rows = '5'>".$q."</textarea> <p>
 				Answer: <br/>
 				<textarea name = 'Answer[]' cols = '100' rows = '5'>".$a."</textarea> <p>";
+		}
+	}
+	
+	// called by Student
+	public function drawQuestions($username) {
+		$questions = $this->getQuestionsByUserName($username);
+		for ($i = 0; $i < $this->NumOfQuestions; $i++) {
+			echo ($i + 1).")<p>";
+			echo 
+				"Question: <br/>
+				<textarea disabled cols = '100' rows = '5'>".$questions[$i]['Question']."</textarea> <p>
+				Answer: <br/>
+				<textarea name = 'Answer[]' cols = '100' rows = '5'></textarea> <p>";
 		}
 	}
 	
