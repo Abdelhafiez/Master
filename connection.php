@@ -69,6 +69,10 @@ function buildUpdateQuery($tableName, $key, $value, $updateKey, $updateValue) {
 	return "UPDATE `".$tableName."` SET `".$updateKey."`='".$updateValue."' WHERE `".$key."` = '".$value."'";
 }
 
+function isAvailableInTable($tableName, $key, $value) {
+	return count(executeSelectQuery(connectToDatabase(), buildSelectQueryByKeyValue($tableName, $key, $value))) > 0;
+}
+
 ?>
 
 
