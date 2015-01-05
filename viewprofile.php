@@ -11,8 +11,13 @@
 	</body>
 </html>
 
+<?php 
+	
+?>
+
 <?php
-	include("connection.php");	
+	include_once("connection.php");	
+	include_once("user.php");
 	session_start();
 	if (!isset($_SESSION['Username'])) // for login
 		header("Location: login.php");
@@ -20,6 +25,10 @@
 	$username = $_SESSION['Username'];
 	$result = array();
 	$result = getuserdetails($connection,$username);
+	if ($_SESSION['Type'] == 'Student') {
+		$points = calculatePoints($_SESSION['Username']);
+		$result['Points'] = $points;
+	}
 	echo "<table>";
 	foreach ($result as $key => $item){
 		if($key=="Password") continue;
@@ -28,4 +37,5 @@
 		echo "</tr>";
 	}
 	echo "</table>";
+	
 ?>
