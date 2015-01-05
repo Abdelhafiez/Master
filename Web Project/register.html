@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Modern Business - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    <script type = "text/javascript">
+                var valid = [false,false,false,false,false,false,false,false,false];
+                function Validate(){
+                    var cnt = 0;
+                    for(var i=1;i<=8;i++){
+                        if(valid[i]==true){
+                            cnt++;
+                        }
+                    }
+                    if(cnt==8) document.getElementById('Submit').disabled = false;
+                }
+                function f1(){
+                    var username  = document.getElementById('UserName').value;
+                    var i,lenf = username.length;
+                    var nameRegex = /^[a-zA-Z\-]+$/;
+                    var validusername = first.match(nameRegex);
+                    if(validusername== null){
+                        var msg = '<span style="color:red;">Your UserName is not valid. Only characters A-Z, a-z and - are  acceptable.</span>';
+                        document.getElementById('msg1').innerHTML = msg;
+                        document.getElementById('UserName').focus();
+                        valid[1] = false;
+                        return Validate();
+                    }else{
+                        var msg = '<span style="color:red;"></span>';
+                        document.getElementById('msg1').innerHTML = msg;
+                        document.getElementById('UserName').focus();
+                    }
+                    valid[1] = true;
+                    return Validate();
+                }
+                function f2(){
+                    var email = document.getElementById('Email').value;
+                    var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/img;
+                    if (email == '' || !email.match(re))
+                    {
+                        var msg = '<span style="color:red;">Please enter a valid email address.</span>';
+                        document.getElementById('msg2').innerHTML = msg;
+                        valid[2] = false;
+                        return Validate();
+                    }else{
+                        var msg = '<span style="color:red;"></span>';
+                        document.getElementById('msg2').innerHTML = msg;
+                        valid[2] = true;
+                        return Validate();
+                    }
+                    return true;
+                }
+                function f3(){
+                    var txtpass = document.getElementById('Password').value;
+                    var desc = new Array();
+                    desc[0] = "Very Weak";
+                    desc[1] = "Weak";
+                    desc[2] = "Better";
+                    desc[3] = "Medium";
+                    desc[4] = "Strong";
+                    desc[5] = "Strongest";
+                    var score   = 0;
+                     //if txtpass bigger than 6 give 1 point
+                    if (txtpass.length > 6) score++;
+                     //if txtpass has both lower and uppercase characters give 1 point
+                    if ( ( txtpass.match(/[a-z]/) ) && ( txtpass.match(/[A-Z]/) ) ) score++;
+                     //if txtpass has at least one number give 1 point
+                    if (txtpass.match(/\d+/)) score++;
+                     //if txtpass has at least one special caracther give 1 point
+                    if ( txtpass.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/) ) score++;
+                     //if txtpass bigger than 12 give another 1 point
+                    if (txtpass.length > 12) score++;
+                    var strenghtMsg = desc[score];
+                    if (txtpass.length < 6) {
+                        var msg = '<span style="color:red;">Password Should be Minimum 6 Characters</span>';
+                        document.getElementById('msg3').innerHTML = msg;
+                        document.getElementById('confirm').disabled = true;
+                        valid[3] = false;
+                        return Validate();
+                    }else{
+                        var msg = '<span style="color:green;">'+strenghtMsg+'</span>';
+                        document.getElementById('msg3').innerHTML = msg;
+                        document.getElementById('confirm').disabled = false;
+                        valid[3] = true;
+                        return Validate();
+                    }
+                }
+                function f4(){
+                    var pass1 = document.getElementById('password').value;
+                    var pass2 = document.getElementById('confirm').value;
+                    var len1 = pass1.length;
+                    var len2 = pass2.length;
+                    if(pass1== pass2&&len1){
+                        var msg = '';
+                        document.getElementById('msg3').innerHTML = msg;
+                        //The passwords match.
+                        var msg = '<span style="color:green;">Passwords Match!</span>';
+                        document.getElementById('msg4').innerHTML = msg;
+                        valid[4] = true;
+                        return Validate();
+                    }else{
+                        var msg = '<span style="color:red;">Passwords Do Not Match!</span>';
+                        document.getElementById('msg4').innerHTML = msg;
+                        valid[4] = false;
+                        return Validate();
+                    }
+                }
+                function f5(){
+                    var first  = document.getElementById('FirstName').value;
+                    var i,lenf = first.length;
+                    var nameRegex = /^[a-zA-Z\-]+$/;
+                    var validfirstname = first.match(nameRegex);
+                    if(validfirstname == null){
+                        var msg = '<span style="color:red;">Your first name is not valid. Only characters A-Z, a-z and - are  acceptable.</span>';
+                        document.getElementById('msg5').innerHTML = msg;
+                        document.getElementById('FirstName').focus();
+                        valid[5] = false;
+                        return Validate();
+                    }else{
+                        var msg = '<span style="color:red;"></span>';
+                        document.getElementById('msg1').innerHTML = msg;
+                        document.getElementById('fname').focus();
+                    }
+                    valid[1] = true;
+                    return Validate();
+                }
+                function f2(){
+                    var last  = document.getElementById('lname').value;
+                    var i,lenl = last.length;
+                    var nameRegex = /^[a-zA-Z\-]+$/;
+                    var validlastname = last.match(nameRegex);
+                    if( validlastname == null){
+                        var msg = '<span style="color:red;">Your last name is not valid. Only characters A-Z, a-z and - are  acceptable.</span>';
+                        document.getElementById('msg2').innerHTML = msg;
+                        valid[2] = false;
+                        return Validate();
+                    }else{
+                        var msg = '<span style="color:red;"></span>';
+                        document.getElementById('msg2').innerHTML = msg;
+                        document.Donate.lastname.focus();
+                    }
+                    valid[2] = true;
+                    return Validate();
+                }   
+                function f3(){
+                    //var msg = '<span style="color:red;">Day : Month : Year</span>';
+                    //document.getElementById('msg3').innerHTML = msg;
+                    var months = [0,31,28,31,30,31,30,31,31,30,31,30,31];
+                    var selm = document.getElementById('month');
+                    var sely = document.getElementById('year');
+                    var m = selm.options[selm.selectedIndex].value;
+                    var y = sely.options[sely.selectedIndex].value;
+                    m = parseInt(m);
+                    y = parseInt(y);
+                    if((y%4==0 && y%100!= 0) || y%400 == 0){
+                        months[2] = 29;
+                    }else{
+                        months[2] = 28;
+                    }
+                    document.getElementById("day").options.length=0;
+                    var x = document.getElementById("day");
+                    var option = document.createElement("option");
+                    option.text = 'Day';
+                    x.add(option);
+                    for(var i=1;i<=months[m];i++){
+                        var x = document.getElementById("day");
+                        var option = document.createElement("option");
+                        option.text = i;
+                        x.add(option);
+                        //document.getElementById('days').innerHTML = '<option value="Day" id = "day">'+i+'</option>';
+                    }
+                    valid[3] = true;
+                    return Validate();
+                }
+                function f33(){
+                    var seld = document.getElementById('day');
+                    if(seld.options[seld.selectedIndex].value!="Day"){
+                        valid[3] = true;
+                        return Validate();
+                    }else{
+                        valid[3] = false;
+                        return Validate();
+                    }
+                }
+                
+                function f5(){
+                    var pass1 = document.getElementById('password').value;
+                    var pass2 = document.getElementById('confirm').value;
+                    var len1 = pass1.length;
+                    var len2 = pass2.length;
+                    if(pass1== pass2&&len1){
+                        var msg = '';
+                        document.getElementById('msg4').innerHTML = msg;
+                        //The passwords match.
+                        var msg = '<span style="color:green;">Passwords Match!</span>';
+                        document.getElementById('msg5').innerHTML = msg;
+                        valid[5] = true;
+                        return Validate();
+                    }else{
+                        var msg = '<span style="color:red;">Passwords Do Not Match!</span>';
+                        document.getElementById('msg5').innerHTML = msg;
+                        valid[5] = false;
+                        return Validate();
+                    }
+                }
+                function f6(){
+                    var genders= document.getElementsByName('gender');
+                    if(genders[1].checked == false && genders[0].checked == false){
+                        alert("You must select your gender!");
+                        valid[6] = false;
+                        return Validate();
+                    }
+                    valid[6] = true;
+                    return Validate();
+                }
+                
+                function f8()
+                {
+                    var arr = ['1','2','3','4'];
+                    len = arr.length;
+                    var cnt = 0;
+                    for(var i=0;i<len;i++){
+                        if(document.getElementById(arr[i]).checked)
+                        cnt++;
+                    }
+                    if(cnt<3){
+                        alert("Please Choose at Least 3 Favourite Fruits");
+                        valid[8] = false;
+                        return Validate();
+                    }
+                    valid[8] = true;
+                    return Validate();
+                }
+            </script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">MyMathTest</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="services.html">Services</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="portfolio-1-col.html">1 Column Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-2-col.html">2 Column Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-3-col.html">3 Column Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-4-col.html">4 Column Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-item.html">Single Portfolio Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="blog-home-1.html">Blog Home 1</a>
+                            </li>
+                            <li>
+                                <a href="blog-home-2.html">Blog Home 2</a>
+                            </li>
+                            <li>
+                                <a href="blog-post.html">Blog Post</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="full-width.html">Full Width Page</a>
+                            </li>
+                            <li>
+                                <a href="sidebar.html">Sidebar Page</a>
+                            </li>
+                            <li>
+                                <a href="faq.html">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="404.html">404</a>
+                            </li>
+                            <li>
+                                <a href="pricing.html">Pricing Table</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="register.html">Register</a>
+                    </li>
+                    <li>
+                        <a href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <form action = "register.php" method = "post" id = "myform" class="form-horizontal" >
+
+            <div class="page-header">
+                 <h3>  <font>Registration Form </font> </h3>
+            </div>
+
+            <table >
+                <tr>
+                    <td>Username</td>
+                    <td><input type = "text" name = "Username" id = "Username"> *<div id="msg1"></div></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type = "text" name = "Email" id = "Email"/> *<div id="msg2"></div></td>
+                </tr>
+                <tr>
+                    <td width = "40%">Password</td>
+                    <td><input type = "password" name = "Password" id = "Password"/> *<div id="msg3"></div></td>
+                </tr>
+                <tr>
+                    <td>Confirm Password</td>
+                    <td><input type = "password" id = "ConfirmPassword" /> *<div id="msg4"></div></td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td><input type = "text" name = "FirstName" id = "FirstName" /> *<div id="msg5"></div></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><input type = "text" name = "LastName" id = "LastName"/> *<div id="msg6"></div></td>
+                </tr>
+                <tr>
+                    <td>Institution</td>
+                    <td><input type = "text" name = "Institution" id = "Institution" /> *<div id="msg7"></div> </td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><input type = "text" name = "Address" id = "Address"> *<div id="msg8"></div> </td>
+                </tr>
+                <tr>
+                    <td>Birthday</td>
+                    <td><input type = "date" name = "DateOfBirth" id = "DateOfBirth"> *<div id="msg9"></div> </td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        <input type = "radio" name = "Gender" value = "male" id = "male"> Male
+                        <input type = "radio" name = "Gender" value = "female" id = "female"> Female
+                    <td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td>
+                        <input type = "radio" name = "Type" value = "student" id = "student"> Student
+                        <input type = "radio" name = "Type" value = "educator"id = "educator" > Educator
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="reset" title="Reset Your Info" value="Reset" id ="resBtn">
+                    </td>
+                    <td>
+                        <input type = "submit" value = "Submit" title="Submit Your Info" id = "subBtn" disabled = "true">
+                    </td>
+                </tr>
+            </table>            
+
+        </form>
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2015</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
+</body>
+
+</html>
