@@ -20,6 +20,15 @@ function verifyUniqueEmail($Email) {
 	return true;
 }
 
+function verifyUniqueName($Name) {
+	if (isAvailableInTable(DB_QUIZ_TABLE, 'QuizName', $Name)) {
+		$_SESSION['error'] = "There already exists a quiz with name: $Name";
+		header("Location:addQuizForm.php");
+		return false;
+	}
+	return true;
+}
+
 function viewError() {
 	if (isset($_SESSION['error'])) {
 		echo "<script type='text/javascript'>alert('".$_SESSION['error']."');</script>";

@@ -13,13 +13,12 @@ session_start();
 	</title>
 </head>
 <body>
-	<a href ="registerForm.php">Register</a>
 	<form method="post" action = "login.php">
-		Name: <input type = "text" name = "Username" ><br / >
-		Password: <input type = "password" name = "Password"> <br / >
-		Remeber me ? :<input type = "checkbox" name = "remember"><br / >
+		Name: <input type = "text" name = "Username" > <p>
+		Password: <input type = "password" name = "Password"> <p>
 		<input type = "submit" name = "submit" value = "Login">
 	</form>
+	<a href ="registerForm.php">Register</a>
 
 </body>
 </html>
