@@ -4,4 +4,5 @@
 	$_POST['Password'] = md5($_POST['Password']);
 	$query = buildInsertQuery(DB_USER_TABLE, $_POST);
 	mysqli_query($connection, $query);
+	header("Location: index.php");
 ?>
