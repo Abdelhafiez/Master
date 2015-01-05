@@ -6,13 +6,14 @@
 	<body>
 		<ul>
 			<li><a href = "index.php">Home</a></li>
-			<li><a href = "logout.php">Logout</li>
+			<li><a href = "logout.php">Logout</a></li>
 		</ul>
 	</body>
 </html>
 
 <?php
-	include("connection.php");	
+	include_once("connection.php");	
+	include_once("user.php");
 	session_start();
 	if (!isset($_SESSION['Username'])) // for login
 		header("Location: login.php");
@@ -20,6 +21,10 @@
 	$username = $_SESSION['Username'];
 	$result = array();
 	$result = getuserdetails($connection,$username);
+	if ($_SESSION['Type'] == 'Student') {
+		$points = calculatePoints($_SESSION['Username']);
+		$result['Points'] = $points;
+	}
 	echo "<table>";
 	foreach ($result as $key => $item){
 		if($key=="Password") continue;
@@ -28,4 +33,6 @@
 		echo "</tr>";
 	}
 	echo "</table>";
+
 ?>
+

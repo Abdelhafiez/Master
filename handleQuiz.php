@@ -19,13 +19,13 @@
 	$arr = array();
 	$arr['QuizId'] = $q->QuizId;
 	$arr['StUserName'] = $username;
-	$arr['Passed'] = '1'; 
-	$query = buildInsertQuery('Attempt', $arr);
-	mysqli_query($connection, $query);
-	if($marks==Count($questions)){
+	if ($marks == Count($questions)) {
+		$arr['Verdict'] = 'Passed';
 		echo "<h1>Passed</h1>";
-	}else{
+	} else {
+		$arr['Verdict'] = 'Failed';
 		echo "<h1>Failed</h1>";
 	}
-	
+	$query = buildInsertQuery('Attempt', $arr);
+	mysqli_query($connection, $query);
 ?>

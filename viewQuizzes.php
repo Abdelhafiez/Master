@@ -31,7 +31,7 @@ $quizzes = executeSelectQuery($connection, buildSelectQueryByKeyValue(DB_QUIZ_TA
 			</tbody>
 		</table>
 		<p>
-		<form action = "addQuiz.html" method = "post" > 
+		<form action = "addQuizForm.php" method = "post" > 
 			<input type = "submit" value = "Add Quiz">
 		</form>
 	</body>

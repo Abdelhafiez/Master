@@ -31,7 +31,7 @@ session_start();
 					echo "&nbsp&nbsp<li><a href = 'logout.php'>LogOut</a><br/><br/></li>";
 					echo "</ul>";
 				}
-				else { // Educatorz
+				else { // Educator
 					echo "<ul>";
 					echo "<li><a href = 'index.php'>Home</a></li>";
 					echo "&nbsp&nbsp<li><a href = 'viewprofile.php'>View Profile</a></li>";
