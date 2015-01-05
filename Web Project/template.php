@@ -51,9 +51,6 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
 					<?php if (isset($_SESSION['Type']) && $_SESSION['Type'] == 'Educator') { ?>
-                        <li>
-                             <a href="contact.html">Contact</a>
-                        </li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Educator <b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -94,9 +91,6 @@
                         <a href="logout.php">Logout</a>
                     </li>
 					<?php } ?>
-                    <li>
-                        <a href="search.php">Search</a>
-                     </li>
                     
                 </ul>
             </div>
