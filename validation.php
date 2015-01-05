@@ -3,19 +3,29 @@
 include_once("connection.php");
 
 function verifyUniqueUsername($Username) {
-	if (isAvailableInTable(DB_USER_TABLE, 'Username', $Username)) {
-		echo "<h4>Username $Username is not available</h4>";
-		echo "You will be redirected in 3 seconds<br>";
-		header("Refresh:3;url=index.php");
+	if (isAvailableInTable(DB_USER_TABLE, 'UserName', $Username)) {
+		$_SESSION['error'] = "Username $Username is not available";
+		header("Location:registerForm.php");
+		return false;
 	}
+	return true;
 }
 
 function verifyUniqueEmail($Email) {
 	if (isAvailableInTable(DB_USER_TABLE, 'Email', $Email)) {
-		echo "<h4>$Email has been already entered before! </h4>";
-		echo "You will be redirected in 3 seconds<br>";
-		header("Refresh:3;url=index.php");
+		$_SESSION['error'] = "$Email has been already entered before!";
+		header("Location:registerForm.php");
+		return false;
+	}
+	return true;
+}
+
+function viewError() {
+	if (isset($_SESSION['error'])) {
+		echo "<script type='text/javascript'>alert('".$_SESSION['error']."');</script>";
+		unset($_SESSION['error']);
 	}
 }
+
 
 ?>

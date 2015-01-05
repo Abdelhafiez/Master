@@ -1,3 +1,14 @@
+<?php
+
+include_once('validation.php');
+
+session_start();
+
+viewError();
+
+?>
+
+
 <html>
 	<head>
 		<title> Registeration </title>
@@ -201,37 +212,37 @@
 			}
 		</script>
 	</head>
-	<body">
+	<body>
 		<form action = "register.php" method = "post" onsubmit = "return Validate()">
 			<table>
 				<tr>
 					<td>Username</td>
-					<td><input type = "text" name = "Username" id = "Username" onkeyup = "f1();"> *</td>
+					<td><input type = "text" name = "Username" id = "Username" oninput = "f1();"> *</td>
 					<td><div id="msg1"></div></td>
 				</tr>
 				<tr>
 					<td>Email</td>
-					<td><input type = "text" name = "Email" id = "Email" onkeyup = "f2()" /> *</td>
+					<td><input type = "text" name = "Email" id = "Email" oninput = "f2()" /> *</td>
 					<td><div id="msg2"></div></td>
 				</tr>
 				<tr>
 					<td>Password</td>
-					<td><input type = "password" name = "Password" id = "Password" onkeyup = "f3()"/> *</td>
+					<td><input type = "password" name = "Password" id = "Password" oninput = "f3()"/> *</td>
 					<td><div id="msg3"></div></td>
 				</tr>
 				<tr>
 					<td>Confirm Password</td>
-					<td><input type = "password" id = "Confirm" onkeyup = "f4()" disabled = "false" /> *</td>
+					<td><input type = "password" id = "Confirm" oninput = "f4()" disabled = "false" /> *</td>
 					<td><div id="msg4"></div></td>
 				</tr>
 				<tr>
 					<td>First Name</td>
-					<td><input type = "text" name = "FirstName" id = "FirstName" onkeyup = "f5()"/> *</td>
+					<td><input type = "text" name = "FirstName" id = "FirstName" oninput = "f5()"/> *</td>
 					<td><div id="msg5"></div></td>
 				</tr>
 				<tr>
 					<td>Last Name</td>
-					<td><input type = "text" name = "LastName" id = "LastName" onkeyup = "f6()"/> *</td>
+					<td><input type = "text" name = "LastName" id = "LastName" oninput = "f6()"/> *</td>
 					<td><div id="msg6"></div></td>
 				</tr>
 				<tr>
@@ -272,15 +283,15 @@
 				<tr>
 					<td>Gender</td>
 					<td>
-						<input type = "radio" name = "Gender" value = "male" id = "male" onchange = "f8()"> Male
-						<input type = "radio" name = "Gender" value = "female" id = "female" onchange = "f8()"> Female
+						<input type = "radio" name = "Gender" value = "Male" id = "male" onchange = "f8()"> Male
+						<input type = "radio" name = "Gender" value = "Female" id = "female" onchange = "f8()"> Female
 					<td>
 				</tr>
 				<tr>
 					<td>Type</td>
 					<td>
-						<input type = "radio" name = "Type" value = "student" id = "student" onchange = "f9()" > Student
-						<input type = "radio" name = "Type" value = "educator"id = "educator" onchange = "f9()" > Educator
+						<input type = "radio" name = "Type" value = "Student" id = "student" onchange = "f9()" > Student
+						<input type = "radio" name = "Type" value = "Educator" id = "educator" onchange = "f9()" > Educator
 					</td>
 				</tr>
 				<tr>

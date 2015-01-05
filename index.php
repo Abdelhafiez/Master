@@ -1,3 +1,10 @@
+<?php
+
+include_once('validation.php');
+
+session_start();
+
+?>
 
 <html>
 	<head>
@@ -5,7 +12,6 @@
 	</head>
 	<body>
 		<?php
-			session_start();
 			if(isset($_SESSION['Username'])){ 
 				if ($_SESSION['Type'] == "Student"){ // student
 					echo "&nbsp <a href = 'index.php'>Home</a><br/><br/>\n";
@@ -20,7 +26,7 @@
 					echo "&nbsp <a href = 'logout.php'>LogOut</a><br/><br/>\n";
 				}
 			}else{ 
-				header("location:login.html");
+				header("location:loginForm.php");
 			}
 		?>
 	</body>
