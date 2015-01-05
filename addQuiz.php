@@ -1,6 +1,6 @@
 <?php
 
-include("connection.php");
+include_once("connection.php");
 
 $connection = connectToDatabase();
 $_POST['EdUserName'] = $_SESSION['UserName'];

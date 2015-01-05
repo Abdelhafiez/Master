@@ -15,7 +15,6 @@ $quizzes = executeSelectQuery($connection, buildSelectQueryByKeyValue(DB_QUIZ_TA
 <html>
 	<head>
 		<title> View Quizzes </title>
-		<link rel="stylesheet" type="text/css" href="styles.css">
 	</head>
 	<body>
 		<h2> My Quizzes </h2>
@@ -26,10 +25,14 @@ $quizzes = executeSelectQuery($connection, buildSelectQueryByKeyValue(DB_QUIZ_TA
 			<tbody>
 				<?php
 					foreach($quizzes as $tuple) {
-						echo "<tr> <td> <a href = 'quizVersions.php?QuizName=".$tuple['QuizName']."'>".$tuple['QuizName']."</a> </td> </tr>";
+						echo "<tr> <td align = center > <a href = 'quizVersions.php?QuizName=".$tuple['QuizName']."'>".$tuple['QuizName']."</a> </td> </tr>";
 					}
 				?>
 			</tbody>
 		</table>
+		<p>
+		<form action = "addQuiz.html" method = "post" > 
+			<input type = "submit" value = "Add Quiz">
+		</form>
 	</body>
 </html>
