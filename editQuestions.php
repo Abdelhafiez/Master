@@ -1,6 +1,11 @@
 <?php
 
 include_once('quiz.php');
+include_once('authorization.php');
+
+session_start();
+verifyEducator();
+
 
 $quiz = Quiz::getQuizByName($_GET['QuizName']);
 $questions = $quiz->getQuestionsByVersion($_GET['version']);
