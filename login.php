@@ -10,6 +10,6 @@
 		$_SESSION['Type'] = $result[0]['Type'];
 		header("location:index.php");
 	}else{
-		header("location:register.html");
+		header("location:index.php");
 	}
 ?>
