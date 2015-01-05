@@ -32,6 +32,7 @@ session_start();
 					echo "</ul>";
 				}
 				else { // Educator
+					echo "<ul>";
 					echo "<li><a href = 'index.php'>Home</a></li>";
 					echo "&nbsp&nbsp<li><a href = 'viewprofile.php'>View Profile</a></li>";
 					echo "&nbsp&nbsp<li><a href = 'viewQuizzes.php'>My Quizzes</a></li>";
