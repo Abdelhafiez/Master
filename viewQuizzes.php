@@ -2,8 +2,10 @@
 
 include_once("quiz.php");
 include_once("connection.php");
+include_once("authorization.php");
 
-$_SESSION['Username'] = 'mrtempo';
+session_start();
+verifyEducator();
 
 $connection = connectToDatabase();
 $quizzes = executeSelectQuery($connection, buildSelectQueryByKeyValue(DB_QUIZ_TABLE, 'EdUserName', $_SESSION['Username']));

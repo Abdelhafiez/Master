@@ -1,9 +1,14 @@
 <?php
-	if (!isset($_SESSION['Username'])) // for login
-		header("Location: login.php");
-	if($_SESSION['Type'] != "Educator") // for type
-		header("Location: index.php");
+
+include_once('authorization.php');
+
+session_start();
+verifyEducator();
+	
+if($_SESSION['Type'] != "Educator") // for type
+	header("Location: index.php");
 ?>
+
 <html>
 	<head> <title> Add Quiz </title> </head>
 	<body>

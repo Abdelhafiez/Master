@@ -1,7 +1,5 @@
 <?php
 
-$_SESSION['UserName'] = 'mrtempo';	// remove this shit
-
 include("connection.php");
 
 $connection = connectToDatabase();

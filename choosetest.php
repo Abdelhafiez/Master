@@ -1,7 +1,9 @@
 <?php
-	session_start();
-	if (!isset($_SESSION['Username'])) // for login
-		header("Location: login.php");
+include_once('authorization.php');
+
+session_start();
+verifyLogin();
+
 	if($_SESSION['Type'] != "Student") // for type
 		header("Location: index.php");
 if(!isset($_SESSION['Username'])){
