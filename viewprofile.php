@@ -6,7 +6,7 @@
 	<body>
 		<ul>
 			<li><a href = "index.php">Home</a></li>
-			<li><a href = "logout.php">Logout</li>
+			<li><a href = "logout.php">Logout</a></li>
 		</ul>
 	</body>
 </html>
