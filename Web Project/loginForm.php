@@ -1,8 +1,9 @@
 <?php
 
+include('template.php');
 include_once('validation.php');
 
-session_start();
+
 
 ?>
 
@@ -14,11 +15,19 @@ session_start();
 </head>
 <body>
 	<form method="post" action = "login.php">
-		Name: <input type = "text" name = "Username" > <p>
-		Password: <input type = "password" name = "Password"> <p>
+		<table width = "30%">
+		<tr> 
+		<td> Name: </td> 
+		<td> <input type = "text" name = "Username" > </td>
+		</tr>
+		<tr>
+		<td> Password: </td>
+		<td> <input type = "password" name = "Password"> </td>
+		</tr>
+		</table>
+		<p>
 		<input type = "submit" name = "submit" value = "Login">
 	</form>
-	<a href ="registerForm.php">Register</a>
 
 </body>
 </html>

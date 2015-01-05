@@ -1,9 +1,10 @@
 <?php
 
+include('template.php');
 include_once('authorization.php');
 include_once('validation.php');
 
-session_start();
+
 
 viewError();
 verifyEducator();

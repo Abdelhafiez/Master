@@ -1,8 +1,9 @@
 <?php
 
+include('template.php');
 include_once("authorization.php");
 
-session_start();
+
 verifyEducator();
 
 if($_SESSION['Type'] != "Educator") // for type

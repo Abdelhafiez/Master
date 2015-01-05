@@ -1,17 +1,16 @@
 <?php
+
+include('template.php');
 include_once('authorization.php');
 
-session_start();
+
 verifyLogin();
 
-	if($_SESSION['Type'] != "Student") // for type
-		header("Location: index.php");
 if(!isset($_SESSION['Username'])){
 
 echo "Access denied!";
 
 }else{
-include("session.php");
 include("connection.php") ; 
 
 echo "<h3>Choose Your Test</h3><p>";

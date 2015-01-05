@@ -1,10 +1,11 @@
 <?php
 
+include('template.php');
 include_once('authorization.php');
 include_once("quiz.php");
 include_once("connection.php");
 
-session_start();
+
 verifyStudent();
 
 $connection = connectToDatabase();
